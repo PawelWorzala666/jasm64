@@ -1,0 +1,132 @@
+<html>
+    <head>
+
+
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+      
+
+    </head>
+    <body>
+        <canvas width="64" height="64"></canvas>
+    </body>
+    <script>
+
+      
+var downloadBlob, downloadURL;
+
+downloadBlob = function(data, fileName, mimeType) {
+  var blob, url;
+  blob = new Blob([data], {
+    type: mimeType
+  });
+  url = window.URL.createObjectURL(blob);
+  downloadURL(url, fileName);
+  setTimeout(function() {
+    return window.URL.revokeObjectURL(url);
+  }, 1000);
+};
+
+downloadURL = function(data, fileName) {
+  var a;
+  a = document.createElement('a');
+  a.href = data;
+  a.download = fileName;
+  document.body.appendChild(a);
+  a.style = 'display: none';
+  a.click();
+  a.remove();
+};
+
+        var canvas = document.querySelector('canvas')
+        var ctx = canvas.getContext('2d')
+    
+        //ctx.font='12px verdana';
+        //ctx.fillText('Please wait for Font Awesome to load...',20,30);
+
+        ctx.font='64px Roboto';
+        ctx.fillStyle = "black";
+
+        var widths = []
+
+        var index = 0
+
+        canvas.width = 16*64
+        canvas.height = 16*64
+        //function fontDown(){
+      
+
+        for (var x = 0; x < 16; x++) {
+        for (var y = 0; y < 16; y++) {
+
+            var letter = String.fromCharCode(index);
+            var t = ctx.measureText(letter);
+            widths.push(parseInt(t.width))
+      
+            console.log(parseInt(t.width))
+
+
+
+            var letter = String.fromCharCode(index);
+            ctx.font='64px Roboto';
+            ctx.fillStyle = "black";
+
+            var t = ctx.measureText(letter);
+
+            
+            ctx.font='64px Roboto';
+            ctx.fillStyle = "black";
+            ctx.fillText(letter,y*64,64+(x*64));
+
+
+            index++
+
+            //if(index<256){
+            //  setTimeout(fontDown,125)
+           // }
+
+      //  }
+        //setTimeout(fontDown,125)
+
+        }}
+
+        widths=widths.map(num=>{
+          if(parseInt(num).toString()==num.toString()){
+            return num.toString()+'.0'
+          }
+          return parseFloat(num)
+        })
+
+        var nums = ''
+        var index = 0
+        var letters=''
+        let numbb = 0
+        widths=widths.map(num=>{
+          index++
+          letters+=String.fromCharCode(numbb)
+          if(index>6){
+            nums+=','+num+',    '+letters+'\n'
+            letters=''
+            index = 0
+            nums+='dq '
+          }else{
+            nums+=''+num+','
+          }
+          numbb++
+          
+        })
+        console.log('widths dq '+nums+'')
+
+        var dataURL = canvas.toDataURL("image/png");
+        downloadURL(dataURL, index+'.png');
+
+       
+        
+    </script>
+    <style>
+        body{ font-family: 'Roboto', sans-serif; }
+#canvas{border:1px solid red; margin:0 auto; background: transparent;}
+    </style>
+</html>
+

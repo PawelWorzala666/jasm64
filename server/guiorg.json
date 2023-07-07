@@ -1,0 +1,20 @@
+{
+    "orient": "vertical",
+    "pane1": {},
+    "pane2": {
+        "orient": "horizontal",
+        "pane1": {
+            "GUI": "FilesList"
+        },
+        "pane2": {
+            "orient": "vertical",
+            "half": 78.06,
+            "pane1": {
+                "GUI": "GetFile"
+            },
+            "pane2": {}
+        },
+        "half": 24.51
+    },
+    "half": 6.51
+}

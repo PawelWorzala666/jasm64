@@ -1,0 +1,18 @@
+func{
+    color: blue;
+}
+text{
+    color: brown;
+}
+comment,
+comment *{
+    color: #b1b1b1 !important;
+}
+num {
+    color: #9f2077;
+    font-weight: 400;
+}
+obj{
+    color: green;
+    font-weight: 400;
+}

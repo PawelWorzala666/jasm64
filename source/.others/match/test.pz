@@ -1,0 +1,35 @@
+
+
+    declare test 12.2
+
+    declare tegd 54.2
+
+    declare ppp 4.2
+
+    declare text1 'hello world'
+
+    log 1 text1
+
+
+    func testFuc
+        declare uuu 4.2
+    endf
+
+    call testFuc
+
+    log 2 'uuu ' uuu
+
+    dodaj test uuu ppp
+
+    log 2 'ppp ' ppp
+
+    podziel ppp tegd ppp
+
+    log 2 'ppp ' ppp
+
+
+    if ppp < tegd
+        log 2 'tegd ' tegd
+    endif
+
+    

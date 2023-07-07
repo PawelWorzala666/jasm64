@@ -1,0 +1,22 @@
+{
+    "orient": "up",
+    "pane1": {
+        "GUI": "MainLinks"
+    },
+    "pane2": {
+        "orient": "left",
+        "pane1": {
+            "GUI": "FilesList"
+        },
+        "pane2": {
+            "orient": "up",
+            "pane1": {
+                "GUI": "GetFile"
+            },
+            "pane2": {},
+            "half": 78.06
+        },
+        "half": 24.51
+    },
+    "half": 6.51
+}
