@@ -33,6 +33,12 @@
         fheight REAL8 0
     SCREEN ENDS
 
+    MOUSE STRUCT
+        posX QWORD 0
+        posY QWORD 0
+    MOUSE ENDS
+
+
 
     .data?
       hInstance dq ?
@@ -426,13 +432,17 @@ textures1 dq ?
       pttl dq mbtitle
       ptxt dq mbtext
 
-      screen label SCREEN
-        ileft   dq  32
-        itop    dq  32
-        iwidth  dq  1280
-        iheight dq  840
-        fwidth  dq  1280.0
-        fheight dq  840.0
+    screen label SCREEN
+      ileft   dq  32
+      itop    dq  32
+      iwidth  dq  1280
+      iheight dq  840
+      fwidth  dq  1280.0
+      fheight dq  840.0
+
+    mouse label MOUSE
+      posX dq 0
+      posY dq 0
 
 
 
@@ -704,8 +714,11 @@ WndProc proc hWin:QWORD,uMsg:QWORD,wParam:QWORD,lParam:QWORD
 
         .case WM_MOUSEMOVE
 
-            ; pobranie współrzędnych kursora myszy
-            ;invoke printf, "MyPoint.x... %i %i %s", word ptr lParam[0], word ptr lParam[2], lf
+            movzx rax, word ptr lParam[0]
+            mov mouse.posX, rax
+            movzx rax, word ptr lParam[2]
+            mov mouse.posY, rax
+            ;invoke printf, "MyPoint.x... %i %i %s", mouse.posX, mouse.posY, lf
 
 
     .endsw
@@ -718,13 +731,11 @@ WndProc endp
 
 
 
-
-
 .data
     constd07 dd 0.7
     consta09 dd 0.9
     consta10 dd 1.0
 
-    ;MyPoint dq ?
+
 
 end
