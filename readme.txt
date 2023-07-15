@@ -5,8 +5,6 @@ opengl engine with compiler JS
 requires msvcrt - in debug - in prod
 
 
-want? ask?
+run etc:
 
-100$
-
-without shaders
+make.bat app3d-01
