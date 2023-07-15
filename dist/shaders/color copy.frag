@@ -49,12 +49,12 @@ void main(){
 
 
     vec3 normal = normalize(v_normal);
-    /*vec3 tangent = normalize(v_tangent);
+    vec3 tangent = normalize(v_tangent);
     vec3 bitangent = normalize(cross(normal, tangent));
     
     mat3 tbn = mat3(tangent, bitangent, normal);
     normal = vec3(texture(normalTexture, vCoord).rgb * 2. - 1.);
-    normal = normalize(tbn * normal);*/
+    normal = normalize(tbn * normal);
     
     vec3 surfaceToViewDirection = normalize(v_surfaceToView);
     vec3 halfVector = normalize(u_lightDirection + surfaceToViewDirection);
@@ -87,12 +87,9 @@ void main(){
     outColor = vec4(
         vec3(-0.091*rand32) *
         - vec3(0.091*rand3) +
-        0.15*diffuse +
-        0.11*vec3(length(diffuse)) +
+        0.31*diffuse +
         0.61*diffuse*fakeLight +
-        0.051614*diffuse*pow(specularLight, shininess)
+        0.1614*diffuse*pow(specularLight, shininess)
     , 1.0);
-
-    //outColor = vec4(fakeLight*diffuse, 1.0);
 
 }
